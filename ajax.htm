@@ -1,0 +1,72 @@
+<HTML> 
+	<head>
+		<title>AJAX - Teste de leitura arquivo ovelhas.txt </title>
+
+		<script language="JavaScript">
+			var Ajax = false;
+			
+			
+			// função para instância objeto ajax
+			function AjaxRequest() {
+		        Ajax = false;
+		        if (window.XMLHttpRequest) { // Mozilla, Safari,...
+		            Ajax = new XMLHttpRequest();
+		        } else if (window.ActiveXObject) { // IE
+		            try {
+		                Ajax = new ActiveXObject("Msxml2.XMLHTTP");
+		            } catch (e) {
+		                try {
+		                    Ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		                } catch (e) {}
+		            }
+		        }		
+			}
+			
+			// função para rodar o componente ajax para realizar leitura no arquivo velha
+			function execute() {											
+			
+				// nome do arquivo texto/
+				var arq_txt= "ovelhas.txt"; 
+				
+				// instancia o componente 
+				AjaxRequest();	
+
+				// se houver erro retorna mensagem de erro e para  	
+				if(!Ajax) {
+					alert("Erro ao instância componente!"); 
+					return;
+				}	
+				
+				
+				// executa Ajax para leitura do arquivo 
+        		Ajax.onreadystatechange = mostraDescricao;				
+				Ajax.open('GET', 'ovelhas.txt');
+        		Ajax.send(null);
+				
+    		}
+						
+			// Função que é chamada dentro da função execute, se tudo de certo, retorna todo conteudo do txt 			
+			function mostraDescricao() {
+					if (Ajax.readyState == 4) {
+						if (Ajax.status == 200) {
+							document.getElementById('resultado').innerHTML = Ajax.responseText;
+						} 
+					}
+			}
+			
+		
+		</script>
+		
+	</head>
+	<body>
+		<form name="frm">
+			Para realizar a leitura do arquivo texto, clique no botão:  <br>
+			<input type="button" value="Ler Arquivo"  onclick="execute()" />					
+		</form>
+		<br> <br>
+		<br> <br>
+		
+		Resultado: 
+		<div id="resultado"></div>
+	</body>
+</html>

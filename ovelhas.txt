@@ -1,0 +1,9 @@
+Tempo, Total Machos, Total Fêmeas, Mortalidade
+Tempo: 0 ; 10; 10; 0
+tempo: 4; 10; 11; 0; 
+tempo: 18; 10; 12; 1; 
+tempo: 20; 11; 12; 2; 
+tempo: 21; 11; 13; 3; 
+tempo: 25; 12; 13; 4; 
+tempo: 26; 13; 13; 5; 
+tempo: 27; 13; 14; 6; 
