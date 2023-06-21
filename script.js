@@ -59,10 +59,18 @@ function executarMonitoramento() {
     const somaEnergia = iframe.contentWindow.world._patches.reduce((acumulador, objeto) => acumulador + objeto._varManager["countdown"], 0);
     var dadosParaSalvar = [0 ,0 ,0, 0];
 
+// converte raças para português
+const racas = {
+  sheep: "ovelhas",
+  wolves: "lobos"
+  // Adicione mais raças aqui, se necessário
+};
+
     for (const nomeAgente of nomesAgentes) {
       if (nomeAgente !== "LINKS" && nomeAgente !== "TURTLES") {
         const { originalName, members } = situacaoAgentes[nomeAgente];
-        textoInformativo += `raça: ${originalName} contém ${members.length} ${members.length != 1 ? 'membros' : 'membro'}`;
+      const raca = racas[originalName] || originalName; // Obtém o nome da raça em português, ou usa o nome original se não houver tradução disponível
+        textoInformativo += `raça: ${raca} contém ${members.length} ${members.length != 1 ? 'membros' : 'membro'}`;
         if (originalName == "sheep") {
           dadosParaSalvar[1] = members.length;
         } else {
