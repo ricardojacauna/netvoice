@@ -56,7 +56,7 @@ function executarMonitoramento() {
     const situacaoAgentes = iframe.contentWindow.BreedManager.breeds();
     const nomesAgentes = Object.keys(situacaoAgentes);
     var textoInformativo = "Contagem: ";
-    const somaEnergia = iframe.contentWindow.world._patches.reduce((acumulador, objeto) => acumulador + objeto._varManager["countdown"], 0);
+    const somaEnergia = iframe.contentWindow.world._patches.reduce((acumulador, objeto) => acumulador + objeto._varManager["grass-amount"], 0);
     var dadosParaSalvar = [0 ,0 ,0, 0];
 
 // converte raças para português
@@ -85,7 +85,7 @@ const racas = {
     // salvar informação no textArea
     var textoParaSalvar = document.getElementById("arquivoDownload").value;
     if (textoParaSalvar == "") {
-        textoParaSalvar += "segundo;ovelha;lobo;energia\n";
+        textoParaSalvar += "segundo; ovelha; lobo; energia\n";
     }
     textoParaSalvar += `\n${segundoExecucao};${dadosParaSalvar[1]};${dadosParaSalvar[2]};${dadosParaSalvar[3]}`;
     document.getElementById("arquivoDownload").value = textoParaSalvar;
@@ -130,7 +130,7 @@ function emExecucao() {
   }
   const divGrafico = iframeDocument.getElementsByClassName('netlogo-plot')[0];
   if (versaoGrafico != divGrafico.getAttribute('data-highcharts-chart')){
-      executarAudio(`Setup da simulação executado com sucesso.`);
+      executarAudio(`Configuração inicial da simulação executado com sucesso.`);
       versaoGrafico = divGrafico.getAttribute('data-highcharts-chart');
   }
   
